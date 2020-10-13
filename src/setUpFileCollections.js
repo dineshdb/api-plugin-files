@@ -94,7 +94,7 @@ export default function setUpFileCollections({
         // resizing image, adding fit, setting output format
         return sharp()
           .resize({ width: size, height: size, fit: sharp.fit[fit], withoutEnlargement: true })
-          .toFormat(format)
+          .toFormat(format, {progressive: true})
           .on("error", (err) => {
             throw new ReactionError("error-sharp-resize-internal", err);
           });
